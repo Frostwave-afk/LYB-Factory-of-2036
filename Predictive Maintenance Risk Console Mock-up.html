@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Predictive Maintenance Mock-up</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--tx:#14213d;--mut:#667085;--bd:#e3e6ec;--ac:#0b5fff;--hi:#d92d20;--md:#dc6803;--lo:#12805c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#18202e;--tx:#e8ecf4;--mut:#93a0b8;--bd:#2a3447;--ac:#6ea0ff;--hi:#ff7a70;--md:#ffb454;--lo:#4fd1a1;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#18202e;--tx:#e8ecf4;--mut:#93a0b8;--bd:#2a3447;--ac:#6ea0ff;--hi:#ff7a70;--md:#ffb454;--lo:#4fd1a1;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px;max-width:1100px;margin-inline:auto}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px}
+h1{font-size:18px;margin:0}.tag{font-size:11px;border:1px solid var(--bd);border-radius:99px;padding:2px 9px;color:var(--mut)}
+.gate{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:8px;padding:10px 12px;margin-bottom:12px;color:var(--mut)}
+.gate b{color:var(--tx)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px}
+.k{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}.v{font-size:24px;font-weight:700}.s{font-size:12px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--bd);vertical-align:top}th{font-size:11px;color:var(--mut);text-transform:uppercase}
+.pill{font-weight:600;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.High{color:var(--hi)}.Medium{color:var(--md)}.Low{color:var(--lo)}
+button{font:inherit;font-size:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:6px;padding:4px 8px;cursor:pointer;margin:0 4px 4px 0}
+button.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+h2{font-size:13px;margin:0 0 8px}.log div{padding:6px 0;border-bottom:1px solid var(--bd);font-size:12px}.log div:last-child{border:0}
+.pipe{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.pipe span{flex:1 1 120px;text-align:center;font-size:12px;padding:6px;border:1px dashed var(--bd);border-radius:6px;color:var(--mut)}
+</style></head><body>
+<header><h1>Predictive Maintenance · Risk Console</h1><span class="tag">MOCK-UP · ILLUSTRATIVE DATA</span></header>
+<div class="gate"><b>Human gate:</b> the system ranks and explains. Engineers approve every action. No auto-shutdown, no set-point changes in the pilot.</div>
+<div class="kpis">
+<div class="card"><div class="k">Sensor coverage</div><div class="v">40%</div><div class="s">Audit pending</div></div>
+<div class="card"><div class="k">Open alerts</div><div class="v" id="open">4</div><div class="s">Awaiting engineer review</div></div>
+<div class="card"><div class="k">Alert precision</div><div class="v">—</div><div class="s">Needs ground truth (Day 31+)</div></div>
+<div class="card"><div class="k">Recovered time</div><div class="v">1.8 d/yr</div><div class="s">Assumed 30% of 6 days, not measured</div></div>
+</div>
+<div class="grid">
+<div class="card"><h2>Asset risk ranking</h2><div class="scroll"><table>
+<thead><tr><th>Asset</th><th>Risk</th><th>Reason</th><th>Confidence</th><th>Action</th></tr></thead>
+<tbody id="rows"></tbody></table></div></div>
+<div class="card log"><h2>Outcome log (feeds back into rules)</h2><div>P-204 · Confirmed · bearing wear found</div><div>C-110 · False alarm · sensor drift</div><div>M-031 · Missed · no sensor coverage</div><div id="newlog"></div></div>
+</div>
+<div class="pipe"><span>1 Data sources</span><span>2 Data quality</span><span>3 Risk assessment</span><span>4 Decision support</span><span>5 Act and learn</span></div>
+<script>
+var A=[["P-101 Feed pump","High","Vibration trending up 3 weeks","Medium (sensored)"],["C-110 Compressor","Medium","Motor current drift; sensor health flagged","Low"],["M-031 Mixer","Medium","Unsensored; similar to failed batch units","Low (inferred)"],["F-007 Fan","Low","Within thresholds","High"]];
+var r=document.getElementById("rows");
+A.forEach(function(a,i){var t=document.createElement("tr");
+t.innerHTML="<td>"+a[0]+"</td><td><span class='pill "+a[1]+"'>"+a[1]+"</span></td><td>"+a[2]+"</td><td>"+a[3]+"</td><td id='c"+i+"'><button class='p'>Approve inspection</button><button>Dismiss</button></td>";
+r.appendChild(t);
+var b=t.querySelectorAll("button");
+b[0].onclick=function(){done(i,a[0],"Inspection approved")};b[1].onclick=function(){done(i,a[0],"Dismissed by engineer")};});
+var n=4;function done(i,name,msg){document.getElementById("c"+i).textContent=msg;n--;document.getElementById("open").textContent=n;
+var d=document.createElement("div");d.textContent=name.split(" ")[0]+" · "+msg+" · awaiting outcome";document.getElementById("newlog").appendChild(d);}
+</script></body></html>
