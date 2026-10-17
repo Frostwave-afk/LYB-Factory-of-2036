@@ -102,10 +102,5 @@ The design is technology-neutral. A reasonable starting point:
 - [ ] Risk estimates for unsensored assets, with uncertainty
 - [ ] Engineer approval workflow and outcome logging
 
-## Team
-
-Add team name, members and contact here.
-
-## AI disclosure
 
 Generative AI assisted drafting, structure and design. The team owns all assumptions, calculations and recommendations.
