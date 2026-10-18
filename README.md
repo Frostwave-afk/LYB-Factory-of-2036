@@ -17,6 +17,7 @@
 </div>
 
 <br>
+
 > [!NOTE]
 > **AI use disclosure.** The ideas, decisions, assumptions, calculations and recommendations in this project are the team's own. We used AI (Claude by Anthropic) to arrange the slide layout, rephrase some of our text, and draft this README and its animated visuals. We reviewed all of it and take responsibility for its content.
 
