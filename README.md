@@ -15,7 +15,11 @@
 &nbsp;·&nbsp; [Why this bet](#why-predictive-maintenance) &nbsp;·&nbsp; [Console](#the-console) &nbsp;·&nbsp; [Architecture](#architecture) &nbsp;·&nbsp; [Sensor gap](#the-sensor-gap) &nbsp;·&nbsp; [90-day pilot](#the-90-day-pilot) &nbsp;·&nbsp; [Impact](#impact-honestly-estimated) &nbsp;·&nbsp; [Risks](#key-risks)
 
 </div>
+> [!NOTE]
+> **AI use disclosure.** The ideas, decisions, assumptions, calculations and recommendations in this project are the team's own. We used AI (Claude by Anthropic) to arrange the slide layout, rephrase some of our text, and draft this README and its animated visuals. We reviewed all of it and take responsibility for its content.
 
+> [!CAUTION]
+> **Concept and mock-up only.** All numbers are illustrative, and the "live" signals, statuses and replays on this page are simulated, not real plant data. The 1.8 days/yr figure rests on an assumed 30% prevention rate and is not a measured result.
 <br>
 
 > **In one line:** a predictive maintenance system that ranks which machine is most likely to hurt you next, says *why*, says *how sure it is*, and then **hands the decision to an engineer**. It never shuts anything down by itself.
